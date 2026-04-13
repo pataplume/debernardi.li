@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#C9A96E" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#C9A96E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1d2550"/>
+      <stop offset="100%" stop-color="#141938"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="#0E1330"/>
+  <circle cx="400" cy="310" r="145" fill="url(#bodyGrad)"/>
+  <ellipse cx="400" cy="790" rx="250" ry="300" fill="url(#bodyGrad)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <text x="400" y="975" font-family="Georgia, serif" font-size="13" fill="rgba(244,237,222,0.2)" text-anchor="middle" letter-spacing="4">PHOTO À VENIR</text>
+</svg>

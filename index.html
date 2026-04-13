@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tristan Debernardi — COO & Directeur des Opérations · Genève</title>
+  <meta name="description" content="Tristan Debernardi — COO freelance basé à Genève. Audit opérationnel, structuration, IA & automatisation, présence digitale.">
+  <meta name="author" content="Tristan Debernardi">
+  <meta property="og:title" content="Tristan Debernardi — COO & Opérations">
+  <meta property="og:description" content="J'entre dans votre organisation, je comprends ce qui coince, et je le répare.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://debernardi.li">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ========== HEADER ========== -->
+  <header id="header">
+    <nav class="nav container">
+      <a href="#hero" class="nav-logo">TD</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#parcours" data-fr="Parcours" data-en="Journey">Parcours</a></li>
+        <li><a href="#outils" data-fr="Outils" data-en="Tools">Outils</a></li>
+        <li><a href="#footer" class="nav-cta" data-fr="Contact" data-en="Contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">EN</button>
+        <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero">
+    <div class="hero-photo-wrap">
+      <img src="assets/photo.png" alt="Tristan Debernardi — COO Genève" class="hero-photo" id="heroPhoto">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <p class="hero-eyebrow">
+        <span data-fr="COO · Genève, Suisse" data-en="COO · Geneva, Switzerland">COO · Genève, Suisse</span>
+      </p>
+      <h1 class="hero-name">
+        <span class="hero-name-line">Tristan</span>
+        <span class="hero-name-line">Debernardi</span>
+      </h1>
+      <!--
+        VARIANTES DE TAGLINE :
+        1. "J'entre dans votre organisation, je comprends ce qui coince, et je le répare." (retenue ici)
+        2. "Ce qui coince, je le nomme. Ce qui bloque, je le répare."
+        3. "J'arrive, j'analyse, je livre. Sans jargon inutile."
+        4. "Les organisations complexes, c'est mon terrain. J'arrive, j'analyse, je livre."
+      -->
+      <p class="hero-tagline"
+         data-fr="J'entre dans votre organisation,<br>je comprends ce qui coince,<br>et je le répare."
+         data-en="I step into your organisation,<br>identify what's broken,<br>and fix it.">
+        J'entre dans votre organisation,<br>je comprends ce qui coince,<br>et je le répare.
+      </p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" id="openChat">
+          <span data-fr="Me parler" data-en="Talk to me">Me parler</span>
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+            <path d="M2 7.5h11M8.5 3L13 7.5 8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a href="assets/cv-tristan-debernardi.pdf" download class="btn btn-secondary">
+          <span data-fr="Télécharger mon CV" data-en="Download my CV">Télécharger mon CV</span>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span class="scroll-line-anim"></span>
+      <span class="scroll-label" data-fr="Défiler" data-en="Scroll">Défiler</span>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="services section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow reveal-up" data-fr="Ce que je fais" data-en="What I do">Ce que je fais</span>
+        <h2 class="section-title reveal-up"
+            data-fr="J'interviens là où ça bloque."
+            data-en="I step in where things stall.">
+          J'interviens là où ça bloque.
+        </h2>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="22" cy="22" r="13" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M31.5 31.5L41 41" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M17 22h10M22 17v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 data-fr="Audit opérationnel" data-en="Operational Audit">Audit opérationnel</h3>
+          <p data-fr="J'analyse vos process en profondeur, je nomme précisément les blocages, et je vous remets un plan d'action concret — pas un deck de 50 slides."
+             data-en="I analyse your processes in depth, name the bottlenecks precisely, and hand you a concrete action plan — not a 50-slide deck.">
+            J'analyse vos process en profondeur, je nomme précisément les blocages, et je vous remets un plan d'action concret — pas un deck de 50 slides.
+          </p>
+        </div>
+
+        <div class="service-card reveal-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="6" y="6" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <rect x="27" y="6" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <rect x="6" y="27" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <rect x="27" y="27" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <h3 data-fr="Structuration" data-en="Structuring">Structuration</h3>
+          <p data-fr="SOP, workflows, gouvernance, mise en place des fondations opérationnelles. Je construis les structures qui tiennent dans la durée."
+             data-en="SOPs, workflows, governance, operational foundations. I build structures that actually hold up over time.">
+            SOP, workflows, gouvernance, mise en place des fondations opérationnelles. Je construis les structures qui tiennent dans la durée.
+          </p>
+        </div>
+
+        <div class="service-card reveal-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 6L7 16v16l17 10 17-10V16L24 6z" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M7 16l17 10M41 16L24 26M24 26v16" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="24" cy="26" r="3.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 data-fr="Intégration IA & Automatisation" data-en="AI & Automation">Intégration IA & Automatisation</h3>
+          <p data-fr="Agents IA, n8n, Make, CRM, ERP. Je connecte vos outils et j'automatise ce qui n'a pas à être fait à la main."
+             data-en="AI agents, n8n, Make, CRM, ERP. I connect your tools and automate what doesn't need a human.">
+            Agents IA, n8n, Make, CRM, ERP. Je connecte vos outils et j'automatise ce qui n'a pas à être fait à la main.
+          </p>
+        </div>
+
+        <div class="service-card reveal-up">
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M7 24h34" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M24 7c-4 5-6 11-6 17s2 12 6 17M24 7c4 5 6 11 6 17s-2 12-6 17" stroke="currentColor" stroke-width="1.8"/>
+            </svg>
+          </div>
+          <h3 data-fr="Présence digitale" data-en="Digital Presence">Présence digitale</h3>
+          <p data-fr="Sites web, outils en ligne, stratégie digitale. Je construis et j'optimise votre visibilité sur le web — comme ce site."
+             data-en="Websites, online tools, digital strategy. I build and optimise your digital footprint — like this website.">
+            Sites web, outils en ligne, stratégie digitale. Je construis et j'optimise votre visibilité sur le web — comme ce site.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PARCOURS / TIMELINE ========== -->
+  <section id="parcours" class="parcours">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow reveal-up" data-fr="Mon parcours" data-en="My journey">Mon parcours</span>
+        <h2 class="section-title reveal-up"
+            data-fr="Des contextes variés,<br>une constante : livrer."
+            data-en="Different contexts,<br>one constant: delivery.">
+          Des contextes variés,<br>une constante : livrer.
+        </h2>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item reveal-up">
+          <div class="timeline-aside">
+            <span class="timeline-period">2024 — 2026</span>
+          </div>
+          <div class="timeline-dot-wrap">
+            <span class="timeline-dot accent"></span>
+            <span class="timeline-line"></span>
+          </div>
+          <div class="timeline-body">
+            <span class="timeline-company">evo360</span>
+            <h3 class="timeline-role" data-fr="COO · Groupe Multi-sites Santé" data-en="COO · Multi-site Healthcare Group">COO · Groupe Multi-sites Santé</h3>
+            <p data-fr="Création d'un groupe de santé from scratch. 4 → 15 personnes, P&L CHF 1.4M. Transformation digitale end-to-end : ERP, CRM, automatisation des process, refonte complète de l'infrastructure IT."
+               data-en="Built a healthcare group from scratch. 4 → 15 people, P&L CHF 1.4M. End-to-end digital transformation: ERP, CRM, process automation, full IT infrastructure overhaul.">
+              Création d'un groupe de santé from scratch. 4 → 15 personnes, P&L CHF 1.4M. Transformation digitale end-to-end : ERP, CRM, automatisation des process, refonte complète de l'infrastructure IT.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-up">
+          <div class="timeline-aside">
+            <span class="timeline-period" data-fr="2022 — présent" data-en="2022 — present">2022 — présent</span>
+          </div>
+          <div class="timeline-dot-wrap">
+            <span class="timeline-dot"></span>
+            <span class="timeline-line"></span>
+          </div>
+          <div class="timeline-body">
+            <span class="timeline-company">Farah Clinic</span>
+            <h3 class="timeline-role" data-fr="Cofondateur · Gouvernance & Conformité" data-en="Co-founder · Governance & Compliance">Cofondateur · Gouvernance & Conformité</h3>
+            <p data-fr="Cofondation d'une clinique médicale genevoise. Mise en place de la gouvernance et de la conformité réglementaire dans un environnement médical exigeant zéro tolérance à l'erreur."
+               data-en="Co-founded a medical clinic in Geneva. Established governance and regulatory compliance in a medical environment with zero tolerance for error.">
+              Cofondation d'une clinique médicale genevoise. Mise en place de la gouvernance et de la conformité réglementaire dans un environnement médical exigeant zéro tolérance à l'erreur.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-up">
+          <div class="timeline-aside">
+            <span class="timeline-period">2023 — 2024</span>
+          </div>
+          <div class="timeline-dot-wrap">
+            <span class="timeline-dot"></span>
+            <span class="timeline-line"></span>
+          </div>
+          <div class="timeline-body">
+            <span class="timeline-company">AS Médecine du Sport</span>
+            <h3 class="timeline-role" data-fr="Directeur Administratif" data-en="Administrative Director">Directeur Administratif</h3>
+            <p data-fr="Direction administrative d'une structure de 20 personnes. Pilotage de l'amélioration continue, optimisation des process internes et coordination des équipes médicales et administratives."
+               data-en="Administrative management of a 20-person structure. Continuous improvement, internal process optimisation, and coordination of medical and administrative teams.">
+              Direction administrative d'une structure de 20 personnes. Pilotage de l'amélioration continue, optimisation des process internes et coordination des équipes médicales et administratives.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-up">
+          <div class="timeline-aside">
+            <span class="timeline-period">2017 — 2022</span>
+          </div>
+          <div class="timeline-dot-wrap">
+            <span class="timeline-dot"></span>
+            <span class="timeline-line"></span>
+          </div>
+          <div class="timeline-body">
+            <span class="timeline-company">Festival Antigel</span>
+            <h3 class="timeline-role" data-fr="Direction des opérations" data-en="Head of Operations">Direction des opérations</h3>
+            <p data-fr="Plus grand festival de Genève. 5 éditions gérées de bout en bout : 50 000+ participants, 100+ événements, 40+ sites. Coordination d'équipes, logistique complexe, gestion fournisseurs."
+               data-en="Geneva's largest festival. Managed 5 full editions: 50,000+ attendees, 100+ events across 40+ venues. Team coordination, complex logistics, supplier management.">
+              Plus grand festival de Genève. 5 éditions gérées de bout en bout : 50 000+ participants, 100+ événements, 40+ sites. Coordination d'équipes, logistique complexe, gestion fournisseurs.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-up">
+          <div class="timeline-aside">
+            <span class="timeline-period">2015 — 2016</span>
+          </div>
+          <div class="timeline-dot-wrap">
+            <span class="timeline-dot"></span>
+            <span class="timeline-line"></span>
+          </div>
+          <div class="timeline-body">
+            <span class="timeline-company">EF Education First</span>
+            <h3 class="timeline-role" data-fr="Développement commercial" data-en="Business Development">Développement commercial</h3>
+            <p data-fr="+28% de croissance commerciale en un an. Développement de partenariats et acquisition de nouveaux marchés."
+               data-en="+28% commercial growth in one year. Partnership development and new market acquisition.">
+              +28% de croissance commerciale en un an. Développement de partenariats et acquisition de nouveaux marchés.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-up timeline-edu">
+          <div class="timeline-aside">
+            <span class="timeline-period" data-fr="Formation" data-en="Education">Formation</span>
+          </div>
+          <div class="timeline-dot-wrap">
+            <span class="timeline-dot dim"></span>
+          </div>
+          <div class="timeline-body">
+            <span class="timeline-company" data-fr="Parcours académique" data-en="Academic Background">Parcours académique</span>
+            <ul class="edu-list">
+              <li><span class="edu-school">Hult International Business School</span> <span class="edu-detail" data-fr="MSc · Dubaï" data-en="MSc · Dubai">MSc · Dubaï</span></li>
+              <li><span class="edu-school">Adelphi University</span> <span class="edu-detail" data-fr="Semestre · New York" data-en="Semester · New York">Semestre · New York</span></li>
+              <li><span class="edu-school" data-fr="IAE Savoie Mont Blanc" data-en="IAE Savoie Mont Blanc">IAE Savoie Mont Blanc</span> <span class="edu-detail" data-fr="BSc Finance · Annecy" data-en="BSc Finance · Annecy">BSc Finance · Annecy</span></li>
+              <li><span class="edu-school" data-fr="Université de Genève" data-en="University of Geneva">Université de Genève</span> <span class="edu-detail" data-fr="1ère année médecine" data-en="1st year medicine">1ère année médecine</span></li>
+              <li><span class="edu-school">Ashridge Business School</span> <span class="edu-detail" data-fr="Certificate Change Management · UK" data-en="Certificate Change Management · UK">Certificate Change Management · UK</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OUTILS / TOOLBOX ========== -->
+  <section id="outils" class="outils section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow reveal-up" data-fr="Boîte à outils" data-en="Toolbox">Boîte à outils</span>
+        <h2 class="section-title reveal-up"
+            data-fr="Les bons outils,<br>au bon endroit."
+            data-en="The right tools,<br>in the right place.">
+          Les bons outils,<br>au bon endroit.
+        </h2>
+      </div>
+      <div class="tools-grid">
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label">ERP</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Odoo</span>
+            <span class="tool-tag">SAP</span>
+            <span class="tool-tag">Medionline</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label">CRM</h4>
+          <div class="tool-tags">
+            <span class="tool-tag" data-fr="Configuration" data-en="Configuration">Configuration</span>
+            <span class="tool-tag" data-fr="Intégration" data-en="Integration">Intégration</span>
+            <span class="tool-tag">Reporting</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label" data-fr="IA & Automatisation" data-en="AI & Automation">IA & Automatisation</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">n8n</span>
+            <span class="tool-tag">Make</span>
+            <span class="tool-tag">Claude</span>
+            <span class="tool-tag">Botpress</span>
+            <span class="tool-tag">Vapi</span>
+            <span class="tool-tag" data-fr="Agents IA" data-en="AI Agents">Agents IA</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label" data-fr="Gestion de projet" data-en="Project Management">Gestion de projet</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Asana</span>
+            <span class="tool-tag">Notion</span>
+            <span class="tool-tag">Airtable</span>
+            <span class="tool-tag">Agile</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label" data-fr="Design & Contenu" data-en="Design & Content">Design & Contenu</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Canva</span>
+            <span class="tool-tag">InDesign</span>
+            <span class="tool-tag">Midjourney</span>
+            <span class="tool-tag">Stable Diffusion</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label">Infrastructure</h4>
+          <div class="tool-tags">
+            <span class="tool-tag">Docker</span>
+            <span class="tool-tag">GitHub</span>
+            <span class="tool-tag">Hugging Face</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label" data-fr="Langues" data-en="Languages">Langues</h4>
+          <div class="tool-tags">
+            <span class="tool-tag" data-fr="Français (natif)" data-en="French (native)">Français (natif)</span>
+            <span class="tool-tag" data-fr="Anglais (C1)" data-en="English (C1)">Anglais (C1)</span>
+            <span class="tool-tag" data-fr="Italien (B1)" data-en="Italian (B1)">Italien (B1)</span>
+          </div>
+        </div>
+
+        <div class="tool-category reveal-up">
+          <h4 class="tool-cat-label" data-fr="Profil" data-en="Profile">Profil</h4>
+          <div class="tool-tags">
+            <span class="tool-tag tool-tag-intj" title="Myers-Briggs: Introverted, Intuitive, Thinking, Judging">INTJ</span>
+            <span class="tool-tag" data-fr="L'Architecte" data-en="The Architect">L'Architecte</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-left">
+          <p class="footer-eyebrow reveal-up" data-fr="Vous avez un projet ?" data-en="Got a project?">Vous avez un projet ?</p>
+          <h2 class="footer-heading reveal-up"
+              data-fr="Parlons-en."
+              data-en="Let's talk.">
+            Parlons-en.
+          </h2>
+          <a href="https://card.debernardi.li" class="btn btn-primary reveal-up" target="_blank" rel="noopener noreferrer">
+            <span data-fr="Aller sur ma carte" data-en="Go to my card">Aller sur ma carte</span>
+          </a>
+        </div>
+        <div class="footer-right reveal-up">
+          <a href="https://linkedin.com/in/tdebernardi" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://wa.me/41793919703" target="_blank" rel="noopener noreferrer" class="footer-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <a href="mailto:tristan@condere.ch" class="footer-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            tristan@condere.ch
+          </a>
+          <a href="assets/cv-tristan-debernardi.pdf" download class="footer-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-fr="Télécharger mon CV" data-en="Download my CV">Télécharger mon CV</span>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Tristan Debernardi</span>
+        <a href="https://card.debernardi.li" target="_blank" rel="noopener noreferrer" class="footer-card-link">card.debernardi.li ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== CHATBOT WIDGET ========== -->
+  <div class="chatbot-widget" id="chatbotWidget" aria-live="polite">
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Ouvrir le chat">
+      <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+      </svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="chatbot-panel" id="chatbotPanel" role="dialog" aria-label="Chat avec Tristan">
+      <div class="chatbot-header">
+        <div class="chatbot-avatar" aria-hidden="true">TD</div>
+        <div class="chatbot-info">
+          <span class="chatbot-name">Tristan</span>
+          <span class="chatbot-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-fr="En ligne" data-en="Online">En ligne</span>
+          </span>
+        </div>
+        <button class="chatbot-close-btn" id="chatbotClose" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chat-msg bot-msg">
+          <p data-fr="Bonjour ! Je suis l'assistant de Tristan. Posez-moi une question sur son parcours, ses services ou comment le contacter."
+             data-en="Hi! I'm Tristan's assistant. Ask me anything about his background, services, or how to get in touch.">
+            Bonjour ! Je suis l'assistant de Tristan. Posez-moi une question sur son parcours, ses services ou comment le contacter.
+          </p>
+        </div>
+      </div>
+      <form class="chatbot-input-area" id="chatbotForm" autocomplete="off">
+        <input
+          type="text"
+          class="chatbot-input"
+          id="chatbotInput"
+          data-placeholder-fr="Posez votre question..."
+          data-placeholder-en="Ask your question..."
+          placeholder="Posez votre question..."
+          aria-label="Message"
+          maxlength="300"
+        >
+        <button type="submit" class="chatbot-send" aria-label="Envoyer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
