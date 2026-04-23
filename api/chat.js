@@ -87,12 +87,12 @@ module.exports = async function handler(req, res) {
         'anthropic-version': '2023-06-01',
         'content-type': 'application/json',
       },
-      body: JSON.stringify({
+      body: Buffer.from(JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 600,
         system: SYSTEM_PROMPT,
         messages: messages.slice(-10),
-      }),
+      }), 'utf-8'),
     });
 
     if (!response.ok) {
