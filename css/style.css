@@ -1309,7 +1309,8 @@ footer {
 /* Service modal: flex column, capped height, inner scroll */
 .tool-modal--service {
   padding: 0;
-  max-height: min(90vh, 740px);
+  height: min(90vh, 740px);      /* hauteur définie → flex: 1 résolvable */
+  max-height: min(90vh, 740px);  /* filet de sécurité viewports petits */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -1411,6 +1412,11 @@ footer {
 
 /* ── MOBILE ADJUSTMENTS FOR SERVICE MODAL ────────────────── */
 @media (max-width: 560px) {
+  .tool-modal--service {
+    height: min(92vh, 740px);
+    max-height: min(92vh, 740px);
+  }
+
   .tool-modal--service .tool-modal-scroll {
     padding: 1.75rem 1.5rem 1rem;
   }
