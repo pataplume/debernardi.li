@@ -369,7 +369,6 @@ h1, h2, h3 { font-family: var(--font-h); font-weight: 400; line-height: 1.1; }
 .hero-name-line {
   display: block;
   opacity: 0;
-  overflow: hidden;
 }
 
 .hero-tagline {
@@ -1124,6 +1123,149 @@ footer {
   .chatbot-widget {
     bottom: 1.25rem;
     right: 1.25rem;
+  }
+}
+
+/* ── INTERACTIVE TOOL TAGS ───────────────────────────────── */
+.tool-tag-interactive {
+  border-color: var(--accent-mid);
+  color: var(--accent);
+  cursor: none;
+  position: relative;
+}
+
+.tool-tag-interactive::after {
+  content: '↗';
+  font-size: 0.7em;
+  margin-left: 0.35em;
+  opacity: 0.75;
+  display: inline-block;
+  transition: transform 0.2s var(--ease-out), opacity 0.2s;
+}
+
+.tool-tag-interactive:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tool-tag-interactive:hover::after {
+  transform: translate(2px, -2px);
+  opacity: 1;
+}
+
+/* INTJ already has its own accent color — no duplicate ::after needed */
+.tool-tag-intj.tool-tag-interactive::after {
+  content: '↗';
+}
+
+/* ── TOOL MODAL ───────────────────────────────────────────── */
+.tool-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 42, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.tool-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.tool-modal {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-hover);
+  border-radius: 14px;
+  width: min(540px, 100%);
+  padding: 2.25rem 2.5rem 2.5rem;
+  position: relative;
+  transform: translateY(22px) scale(0.96);
+  transition: transform 0.32s var(--ease-back);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+}
+
+.tool-modal-overlay.open .tool-modal {
+  transform: translateY(0) scale(1);
+}
+
+.tool-modal-close {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  cursor: none;
+}
+
+.tool-modal-close:hover {
+  color: var(--text);
+  background: var(--border);
+}
+
+.tool-modal-close svg { width: 16px; height: 16px; }
+
+.tool-modal-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+.tool-modal-title {
+  font-family: var(--font-h);
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.tool-modal-body {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.tool-modal-body ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.tool-modal-body li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.tool-modal-body li::before {
+  content: '—';
+  color: var(--accent);
+  flex-shrink: 0;
+  opacity: 0.7;
+  line-height: 1.75;
+}
+
+@media (max-width: 560px) {
+  .tool-modal {
+    padding: 1.75rem 1.5rem 2rem;
   }
 }
 

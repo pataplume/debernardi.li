@@ -222,11 +222,11 @@ const chatData = {
     },
     {
       kw: ['contact', 'joindre', 'appeler', 'email', 'mail', 'whatsapp', 'linkedin', 'téléphone', 'écrire'],
-      r: "Pour contacter Tristan :\n\n📧 tristan@condere.ch\n💬 WhatsApp : +41 79 391 97 03\n💼 LinkedIn : linkedin.com/in/tdebernardi\n\nIl répond vite.",
+      r: "Pour contacter Tristan :\n\n📧 tristan@debernardi.li\n💬 WhatsApp : +41 79 391 97 03\n💼 LinkedIn : linkedin.com/in/tdebernardi\n\nIl répond vite.",
     },
     {
       kw: ['cv', 'formation', 'études', 'diplôme', 'université', 'hult', 'école', 'académique'],
-      r: "Tristan a un parcours académique atypique : MSc à Hult (Dubaï), semestre à Adelphi (New York), BSc Finance (Annecy), 1ère année de médecine à Genève, et un Certificate en Change Management à Ashridge (UK). Ce mix explique sa polyvalence.",
+      r: "Tristan a un parcours académique atypique : Certificate en Change Management à Ashridge (UK), MSc International Business à Hult (Dubaï), BSc Finance à l'IAE Savoie Mont Blanc (Annecy). Ce mix explique sa polyvalence.",
     },
     {
       kw: ['ia', 'intelligence artificielle', 'automatisation', 'n8n', 'make', 'claude', 'bot', 'agent', 'chatbot', 'vapi', 'botpress'],
@@ -238,7 +238,7 @@ const chatData = {
     },
     {
       kw: ['tarif', 'prix', 'coût', 'combien', 'tjm', 'journée', 'honoraires', 'facturation'],
-      r: "Pour les tarifs, Tristan préfère en discuter directement selon la mission — durée, périmètre, modalités. Contactez-le à tristan@condere.ch pour une conversation.",
+      r: "Pour les tarifs, Tristan préfère en discuter directement selon la mission — durée, périmètre, modalités. Contactez-le à tristan@debernardi.li pour une conversation.",
     },
     {
       kw: ['intj', 'personnalité', 'mbti', 'profil', 'type'],
@@ -250,7 +250,7 @@ const chatData = {
     },
     {
       kw: ['disponible', 'disponibilité', 'quand', 'agenda', 'planning', 'commencer'],
-      r: "Pour la disponibilité, le mieux est de contacter Tristan directement : tristan@condere.ch ou WhatsApp +41 79 391 97 03. Il répondra rapidement.",
+      r: "Pour la disponibilité, le mieux est de contacter Tristan directement : tristan@debernardi.li ou WhatsApp +41 79 391 97 03. Il répondra rapidement.",
     },
     {
       kw: ['odoo', 'sap', 'erp', 'medionline', 'crm', 'asana', 'notion', 'airtable'],
@@ -284,11 +284,11 @@ const chatData = {
     },
     {
       kw: ['contact', 'reach', 'call', 'email', 'whatsapp', 'linkedin', 'phone', 'write'],
-      r: "To contact Tristan:\n\n📧 tristan@condere.ch\n💬 WhatsApp: +41 79 391 97 03\n💼 LinkedIn: linkedin.com/in/tdebernardi\n\nHe gets back quickly.",
+      r: "To contact Tristan:\n\n📧 tristan@debernardi.li\n💬 WhatsApp: +41 79 391 97 03\n💼 LinkedIn: linkedin.com/in/tdebernardi\n\nHe gets back quickly.",
     },
     {
       kw: ['cv', 'resume', 'education', 'degree', 'hult', 'university', 'school', 'academic'],
-      r: "Tristan has an unconventional academic background: MSc at Hult (Dubai), semester at Adelphi (New York), BSc Finance (Annecy), first year of medicine in Geneva, and a Change Management Certificate from Ashridge (UK). That mix explains his versatility.",
+      r: "Tristan has an unconventional academic background: Change Management Certificate from Ashridge (UK), MSc International Business at Hult (Dubai), BSc Finance at IAE Savoie Mont Blanc (Annecy). That mix explains his versatility.",
     },
     {
       kw: ['ai', 'automation', 'n8n', 'make', 'claude', 'bot', 'agent', 'chatbot', 'vapi', 'botpress'],
@@ -300,7 +300,7 @@ const chatData = {
     },
     {
       kw: ['rate', 'price', 'cost', 'fee', 'day rate', 'how much', 'invoice'],
-      r: "For rates, Tristan prefers to discuss directly based on the mission — duration, scope, modality. Contact him at tristan@condere.ch for that conversation.",
+      r: "For rates, Tristan prefers to discuss directly based on the mission — duration, scope, modality. Contact him at tristan@debernardi.li for that conversation.",
     },
     {
       kw: ['intj', 'personality', 'mbti', 'profile', 'type'],
@@ -312,7 +312,7 @@ const chatData = {
     },
     {
       kw: ['available', 'availability', 'when', 'schedule', 'start'],
-      r: "For availability, the best is to contact Tristan directly: tristan@condere.ch or WhatsApp +41 79 391 97 03. He'll respond quickly.",
+      r: "For availability, the best is to contact Tristan directly: tristan@debernardi.li or WhatsApp +41 79 391 97 03. He'll respond quickly.",
     },
     {
       kw: ['odoo', 'sap', 'erp', 'medionline', 'crm', 'asana', 'notion', 'airtable'],
@@ -322,8 +322,8 @@ const chatData = {
 };
 
 const fallback = {
-  fr: "Bonne question. Pour une réponse précise sur ce point, contactez Tristan directement à tristan@condere.ch ou sur WhatsApp. Il répondra vite.",
-  en: "Good question. For a precise answer on that, contact Tristan directly at tristan@condere.ch or via WhatsApp. He gets back quickly.",
+  fr: "Bonne question. Pour une réponse précise sur ce point, contactez Tristan directement à tristan@debernardi.li ou sur WhatsApp. Il répondra vite.",
+  en: "Good question. For a precise answer on that, contact Tristan directly at tristan@debernardi.li or via WhatsApp. He gets back quickly.",
 };
 
 function getResponse(input, lang) {
@@ -427,7 +427,98 @@ function syncChatbotGreeting(lang) {
   if (val) firstMsg.textContent = val;
 }
 
-/* ── 11. SMOOTH SCROLL ANCHOR LINKS ─────────────────────── */
+/* ── 11. TOOL MODAL ──────────────────────────────────────── */
+const toolModalData = {
+  fr: {
+    'agents-ia': {
+      label: 'IA & Automatisation',
+      title: 'Agents IA sur mesure',
+      items: [
+        'Tri et classification automatique de documents — contrats, factures, dossiers médicaux organisés sans intervention humaine',
+        'Plateforme de réception et archivage automatisé — emails, formulaires et pièces jointes traités et rangés dès réception',
+        'Scraping web avec actions concrètes — veille concurrentielle, extraction de données structurées, alertes en temps réel',
+        'Agents de support et de qualification — réponses à la FAQ, tri de leads, prise de rendez-vous, réponses automatiques',
+        'Workflows intelligents sur mesure — si votre organisation répète quelque chose, un agent peut s\'en charger'
+      ]
+    },
+    'intj': {
+      label: 'Profil Myers-Briggs',
+      title: 'INTJ — L\'Architecte',
+      items: [
+        'Stratégique et orienté systèmes : conçoit des structures qui résolvent le bon problème, pas juste le plus visible',
+        'Direct et factuel : allergique à la bureaucratie gratuite, aux réunions sans décision et aux objectifs flous',
+        'Fonctionne mieux avec un problème clair et une latitude d\'action — pas de micro-management',
+        'Pose toujours « pourquoi » avant « comment » : si le process ne sert pas l\'objectif, il change le process'
+      ]
+    }
+  },
+  en: {
+    'agents-ia': {
+      label: 'AI & Automation',
+      title: 'Custom AI Agents',
+      items: [
+        'Automatic document sorting and classification — contracts, invoices, medical files organised without human intervention',
+        'Automated reception and archiving platform — emails, forms, and attachments processed and filed on receipt',
+        'Web scraping with concrete actions — competitive monitoring, structured data extraction, real-time alerts',
+        'Support and qualification agents — FAQ responses, lead triage, appointment scheduling, automated replies',
+        'Custom intelligent workflows — if your organisation repeats something, an agent can handle it'
+      ]
+    },
+    'intj': {
+      label: 'Myers-Briggs Profile',
+      title: 'INTJ — The Architect',
+      items: [
+        'Strategic and systems-oriented: builds structures that solve the right problem, not just the obvious one',
+        'Direct and factual: allergic to pointless bureaucracy, decision-free meetings, and vague goals',
+        'Works best with a clear problem and room to act — no micromanagement',
+        'Always asks \'why\' before \'how\': if the process doesn\'t serve the goal, change the process'
+      ]
+    }
+  }
+};
+
+const toolModalOverlay = document.getElementById('toolModalOverlay');
+const toolModalClose   = document.getElementById('toolModalClose');
+const toolModalLabel   = document.getElementById('toolModalLabel');
+const toolModalTitle   = document.getElementById('toolModalTitle');
+const toolModalBody    = document.getElementById('toolModalBody');
+
+function openToolModal(id) {
+  const data = toolModalData[currentLang]?.[id] || toolModalData.fr[id];
+  if (!data) return;
+
+  toolModalLabel.textContent = data.label;
+  toolModalTitle.textContent = data.title;
+  toolModalBody.innerHTML = '<ul>' + data.items.map(item => `<li>${item}</li>`).join('') + '</ul>';
+
+  toolModalOverlay.classList.add('open');
+  lenis.stop();
+  toolModalClose.focus();
+}
+
+function closeToolModal() {
+  toolModalOverlay.classList.remove('open');
+  lenis.start();
+}
+
+toolModalClose.addEventListener('click', closeToolModal);
+
+toolModalOverlay.addEventListener('click', (e) => {
+  if (e.target === toolModalOverlay) closeToolModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && toolModalOverlay.classList.contains('open')) closeToolModal();
+});
+
+document.querySelectorAll('[data-modal]').forEach(el => {
+  el.addEventListener('click', () => openToolModal(el.dataset.modal));
+  el.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openToolModal(el.dataset.modal); }
+  });
+});
+
+/* ── 13. SMOOTH SCROLL ANCHOR LINKS ─────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const target = document.querySelector(a.getAttribute('href'));
