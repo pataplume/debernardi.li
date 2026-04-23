@@ -79,7 +79,7 @@ function callAnthropic(apiKey, payload) {
       path: '/v1/messages',
       method: 'POST',
       headers: {
-        'x-api-key': apiKey,
+        'x-api-key': (apiKey || '').trim(),
         'anthropic-version': '2023-06-01',
         'content-type': 'application/json',
         'content-length': bodyBuf.length,
