@@ -1085,14 +1085,18 @@ footer {
   }
 
   .timeline-item {
-    grid-template-columns: 0 32px 1fr;
+    grid-template-columns: 32px 1fr;
     gap: 0 1rem;
   }
 
   .timeline-aside { display: none; }
 
+  .timeline-dot-wrap { grid-column: 1; }
+
   .timeline-body {
     padding-left: 0;
+    min-width: 0;
+    grid-column: 2;
   }
 
   .footer-top {
