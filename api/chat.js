@@ -68,6 +68,34 @@ RÈGLES ABSOLUES
 - Garde les réponses courtes et utiles — pas de dissertation
 - Tu es sur un site professionnel, reste dans ce registre`;
 
+const https = require('https');
+
+function callAnthropic(apiKey, payload) {
+  return new Promise((resolve, reject) => {
+    const bodyBuf = Buffer.from(JSON.stringify(payload), 'utf-8');
+
+    const req = https.request({
+      hostname: 'api.anthropic.com',
+      path: '/v1/messages',
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+        'content-length': bodyBuf.length,
+      },
+    }, (res) => {
+      let data = '';
+      res.on('data', chunk => { data += chunk; });
+      res.on('end', () => resolve({ status: res.statusCode, body: data }));
+    });
+
+    req.on('error', reject);
+    req.write(bodyBuf);
+    req.end();
+  });
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -80,28 +108,19 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': process.env.ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: Buffer.from(JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 600,
-        system: SYSTEM_PROMPT,
-        messages: messages.slice(-10),
-      }), 'utf-8'),
+    const result = await callAnthropic(process.env.ANTHROPIC_API_KEY, {
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 600,
+      system: SYSTEM_PROMPT,
+      messages: messages.slice(-10),
     });
 
-    if (!response.ok) {
-      const err = await response.text();
-      console.error('Anthropic API error:', err);
+    if (result.status !== 200) {
+      console.error('Anthropic API error:', result.status, result.body);
       return res.status(502).json({ error: 'Upstream API error' });
     }
 
-    const data = await response.json();
+    const data = JSON.parse(result.body);
     const reply = data.content?.[0]?.text ?? '';
 
     return res.status(200).json({ reply });
