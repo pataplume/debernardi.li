@@ -428,6 +428,185 @@ function syncChatbotGreeting(lang) {
 }
 
 /* ── 11. TOOL MODAL ──────────────────────────────────────── */
+
+/* Service modal content — stored in JS, follows data-fr/data-en convention */
+const serviceModals = {
+  fr: {
+    audit: {
+      label: 'Audit opérationnel',
+      title: 'En 3 semaines, vous saurez exactement ce qui vous coûte du temps, de l\'argent, et pourquoi.',
+      whenLabel: 'Quand m\'appeler',
+      when: [
+        'Vous sentez que ça frotte mais vous ne savez pas où',
+        'Votre équipe court après les urgences au lieu d\'avancer',
+        'Vous voulez recruter ou structurer et vous ne savez pas par quoi commencer',
+        'Vos chiffres ne reflètent pas ce que vous percevez du terrain',
+      ],
+      deliversLabel: 'Ce que je livre',
+      delivers: [
+        'Cartographie des process critiques — la vraie, pas celle du PowerPoint RH',
+        'Liste priorisée des blocages, avec impact estimé (CHF, heures, risque)',
+        'Plan d\'action 90 jours : quoi faire, dans quel ordre, par qui',
+        'Un debrief oral d\'1h avec les décideurs, sans jargon',
+      ],
+      format: '2 à 4 semaines · interviews, observation terrain, lecture data · forfait défini en amont',
+      price: 'Pas un audit à CHF 30 000 qui finit dans un tiroir.',
+      cta: 'Prendre un RDV de 20 min en ligne',
+    },
+    structuration: {
+      label: 'Structuration',
+      title: 'Vos opérations tournent sans dépendre de vous ni d\'une personne-clé.',
+      whenLabel: 'Quand m\'appeler',
+      when: [
+        'Tout repose sur 1 ou 2 personnes (vous compris)',
+        'Chaque nouveau collaborateur met 3 mois à être opérationnel',
+        'Vous refaites les mêmes erreurs à chaque cycle ou projet',
+        'Vous préparez une levée, une certification, ou une cession',
+      ],
+      deliversLabel: 'Ce que je livre',
+      delivers: [
+        'SOPs des process critiques, écrits pour être suivis, pas archivés',
+        'Cartographie RACI : qui décide, qui exécute, qui est informé',
+        'Modèle de gouvernance opérationnelle (rituels, KPIs, cadence)',
+        'Documentation onboarding réutilisable',
+      ],
+      format: '4 à 12 semaines selon le périmètre · sur site et asynchrone · forfait ou temps partagé',
+      price: 'Pas un mandat à CHF 80 000 chez un cabinet pour livrer un classeur de SOPs que personne n\'ouvrira.',
+      cta: 'Prendre un RDV de 20 min en ligne',
+    },
+    automatisation: {
+      label: 'Intégration IA & Automatisation',
+      title: 'Ce qui peut être automatisé l\'est. Ce qui doit rester humain est protégé.',
+      whenLabel: 'Quand m\'appeler',
+      when: [
+        'Vous saisissez la même donnée dans 3 outils différents',
+        'Vous payez du temps qualifié à faire du copier-coller',
+        'Vous voulez « faire de l\'IA » mais ne savez pas par quel bout prendre',
+        'Vos outils existent mais ne se parlent pas',
+      ],
+      deliversLabel: 'Ce que je livre',
+      delivers: [
+        'Cartographie des flux automatisables et estimation du ROI réel',
+        'Workflows opérationnels (n8n / Make), déployés et documentés',
+        'Agents IA configurés sur vos cas d\'usage : support, qualification, reporting…',
+        'Connexions CRM / ERP / outils internes',
+        'Transfert de compétences pour que ça vive sans moi',
+      ],
+      format: 'Sprint de 2 à 6 semaines par cas d\'usage · forfait par workflow',
+      price: 'Du sur-mesure, pas un outil générique rigide à CHF 300/mois plus CHF 2 000 de formation inutile.',
+      cta: 'Prendre un RDV de 20 min en ligne',
+    },
+    digital: {
+      label: 'Présence digitale',
+      title: 'Un site et des outils en ligne qui font le travail à votre place : capter, qualifier, convertir.',
+      whenLabel: 'Quand m\'appeler',
+      when: [
+        'Votre site est joli mais ne convertit pas',
+        'Vous n\'avez pas de site, ou un site qui fait honte à votre offre',
+        'Vous voulez un outil web sur mesure (calculateur, formulaire, espace client) sans payer une agence',
+        'Votre image en ligne ne reflète plus ce que vous êtes devenu',
+      ],
+      deliversLabel: 'Ce que je livre',
+      delivers: [
+        'Site web rapide, propre, multilingue (comme celui-ci)',
+        'Outils en ligne sur mesure : formulaires intelligents, calculateurs, mini-apps',
+        'Stratégie de présence : SEO de base, positionnement, contenus prioritaires',
+        'Intégration avec vos outils (CRM, agenda, paiement)',
+      ],
+      format: '2 à 8 semaines selon ambition · forfait projet',
+      price: 'Pas CHF 5 000 pour une vitrine WordPress que vous ne pourrez plus toucher seul.',
+      cta: 'Prendre un RDV de 20 min en ligne',
+    },
+  },
+  en: {
+    audit: {
+      label: 'Operational Audit',
+      title: 'In 3 weeks, you\'ll know exactly what\'s costing you time, money, and why.',
+      whenLabel: 'When to call me',
+      when: [
+        'You sense friction but can\'t pinpoint where',
+        'Your team is firefighting instead of moving forward',
+        'You want to hire or scale but don\'t know where to start',
+        'Your numbers don\'t match what you see on the ground',
+      ],
+      deliversLabel: 'What I deliver',
+      delivers: [
+        'Critical process mapping — the real one, not the HR PowerPoint version',
+        'Prioritised list of blockers with estimated impact (CHF, hours, risk)',
+        '90-day action plan: what to do, in what order, by whom',
+        'A 1-hour verbal debrief with decision-makers, jargon-free',
+      ],
+      format: '2 to 4 weeks · interviews, field observation, data review · fixed fee agreed upfront',
+      price: 'Not a CHF 30,000 audit that ends up in a drawer.',
+      cta: 'Book a 20-min online meeting',
+    },
+    structuration: {
+      label: 'Structuring',
+      title: 'Your operations run without depending on you or any single person.',
+      whenLabel: 'When to call me',
+      when: [
+        'Everything relies on 1 or 2 people (including you)',
+        'Every new hire takes 3 months to become productive',
+        'You repeat the same mistakes every cycle or project',
+        'You\'re preparing a fundraise, a certification, or a sale',
+      ],
+      deliversLabel: 'What I deliver',
+      delivers: [
+        'SOPs for critical processes, written to be followed — not archived',
+        'RACI mapping: who decides, who executes, who is informed',
+        'Operational governance model (rituals, KPIs, cadence)',
+        'Reusable onboarding documentation',
+      ],
+      format: '4 to 12 weeks depending on scope · on-site and async · fixed fee or fractional',
+      price: 'Not a CHF 80,000 consultancy mandate to deliver a binder of SOPs nobody opens.',
+      cta: 'Book a 20-min online meeting',
+    },
+    automatisation: {
+      label: 'AI & Automation Integration',
+      title: 'What can be automated is. What must stay human is protected.',
+      whenLabel: 'When to call me',
+      when: [
+        'You\'re entering the same data into 3 different tools',
+        'You\'re paying skilled people to copy and paste',
+        'You want to "do AI" but don\'t know where to start',
+        'Your tools exist but don\'t talk to each other',
+      ],
+      deliversLabel: 'What I deliver',
+      delivers: [
+        'Mapping of automatable flows and realistic ROI estimates',
+        'Operational workflows (n8n / Make), deployed and documented',
+        'AI agents configured for your use cases: support, qualification, reporting…',
+        'CRM / ERP / internal tool integrations',
+        'Knowledge transfer so it lives on without me',
+      ],
+      format: '2 to 6-week sprint per use case · fixed fee per workflow',
+      price: 'Custom-built, not a rigid generic tool at CHF 300/month plus CHF 2,000 in pointless training.',
+      cta: 'Book a 20-min online meeting',
+    },
+    digital: {
+      label: 'Digital Presence',
+      title: 'A website and online tools that do the work for you: capture, qualify, convert.',
+      whenLabel: 'When to call me',
+      when: [
+        'Your site looks good but doesn\'t convert',
+        'You don\'t have a site, or one that undersells your offer',
+        'You want a custom web tool (calculator, form, client portal) without paying an agency',
+        'Your online image no longer reflects who you\'ve become',
+      ],
+      deliversLabel: 'What I deliver',
+      delivers: [
+        'Fast, clean, multilingual website (like this one)',
+        'Custom online tools: smart forms, calculators, mini-apps',
+        'Presence strategy: basic SEO, positioning, priority content',
+        'Integration with your tools (CRM, calendar, payment)',
+      ],
+      format: '2 to 8 weeks depending on scope · fixed project fee',
+      price: 'Not CHF 5,000 for a WordPress showcase you can\'t touch on your own.',
+      cta: 'Book a 20-min online meeting',
+    },
+  },
+};
+
 const toolModalData = {
   fr: {
     'agents-ia': {
@@ -478,18 +657,60 @@ const toolModalData = {
 };
 
 const toolModalOverlay = document.getElementById('toolModalOverlay');
+const toolModalEl      = document.getElementById('toolModal');
 const toolModalClose   = document.getElementById('toolModalClose');
 const toolModalLabel   = document.getElementById('toolModalLabel');
 const toolModalTitle   = document.getElementById('toolModalTitle');
 const toolModalBody    = document.getElementById('toolModalBody');
+const toolModalCta     = document.getElementById('toolModalCta');
+
+let lastFocusedBeforeModal = null;
 
 function openToolModal(id) {
-  const data = toolModalData[currentLang]?.[id] || toolModalData.fr[id];
+  // Try service modal first, fall back to tool modal data
+  const svcData  = serviceModals[currentLang]?.[id] || serviceModals.fr?.[id];
+  const toolData = toolModalData[currentLang]?.[id]  || toolModalData.fr?.[id];
+  const data = svcData || toolData;
   if (!data) return;
+
+  lastFocusedBeforeModal = document.activeElement;
 
   toolModalLabel.textContent = data.label;
   toolModalTitle.textContent = data.title;
-  toolModalBody.innerHTML = '<ul>' + data.items.map(item => `<li>${item}</li>`).join('') + '</ul>';
+
+  if (svcData) {
+    // Rich service modal content
+    toolModalBody.innerHTML =
+      `<div class="service-section">
+        <p class="service-section-label">${data.whenLabel}</p>
+        <ul>${data.when.map(item => `<li>${item}</li>`).join('')}</ul>
+      </div>
+      <div class="service-section">
+        <p class="service-section-label">${data.deliversLabel}</p>
+        <ul>${data.delivers.map(item => `<li>${item}</li>`).join('')}</ul>
+      </div>
+      <div class="service-format"><strong>Format</strong> — ${data.format}</div>
+      <p class="service-price-note">${data.price}</p>`;
+
+    toolModalEl.classList.add('tool-modal--service');
+
+    toolModalCta.innerHTML =
+      `<a href="#" class="tool-modal-cta-btn">
+        <!-- TODO: lien Google Calendar à fournir -->
+        ${data.cta}
+        <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true">
+          <path d="M2 7.5h11M8.5 3L13 7.5 8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>`;
+
+    // Reset scroll position each open
+    document.getElementById('toolModalScroll').scrollTop = 0;
+  } else {
+    // Regular tool modal (agents-ia, intj…)
+    toolModalBody.innerHTML = '<ul>' + toolData.items.map(item => `<li>${item}</li>`).join('') + '</ul>';
+    toolModalEl.classList.remove('tool-modal--service');
+    toolModalCta.innerHTML = '';
+  }
 
   toolModalOverlay.classList.add('open');
   lenis.stop();
@@ -499,7 +720,28 @@ function openToolModal(id) {
 function closeToolModal() {
   toolModalOverlay.classList.remove('open');
   lenis.start();
+  // Restore focus to the element that triggered the modal
+  if (lastFocusedBeforeModal) {
+    lastFocusedBeforeModal.focus();
+    lastFocusedBeforeModal = null;
+  }
 }
+
+// Focus trap within the modal
+toolModalOverlay.addEventListener('keydown', (e) => {
+  if (!toolModalOverlay.classList.contains('open') || e.key !== 'Tab') return;
+  const focusable = Array.from(
+    toolModalEl.querySelectorAll('button, a[href], input, [tabindex]:not([tabindex="-1"])')
+  ).filter(el => !el.disabled);
+  if (focusable.length === 0) return;
+  const first = focusable[0];
+  const last  = focusable[focusable.length - 1];
+  if (e.shiftKey) {
+    if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+  } else {
+    if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+  }
+});
 
 toolModalClose.addEventListener('click', closeToolModal);
 

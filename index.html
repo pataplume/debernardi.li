@@ -97,7 +97,9 @@
       </div>
       <div class="services-grid">
 
-        <div class="service-card reveal-up">
+        <div class="service-card reveal-up"
+             data-modal="audit"
+             role="button" tabindex="0" aria-haspopup="dialog">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <circle cx="22" cy="22" r="13" stroke="currentColor" stroke-width="1.8"/>
@@ -110,9 +112,14 @@
              data-en="I analyse your processes in depth, name the bottlenecks precisely, and hand you a concrete action plan — not a 50-slide deck.">
             J'analyse vos process en profondeur, je nomme précisément les blocages, et je vous remets un plan d'action concret — pas un deck de 50 slides.
           </p>
+          <span class="service-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
 
-        <div class="service-card reveal-up">
+        <div class="service-card reveal-up"
+             data-modal="structuration"
+             role="button" tabindex="0" aria-haspopup="dialog">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <rect x="6" y="6" width="15" height="15" rx="2" stroke="currentColor" stroke-width="1.8"/>
@@ -126,9 +133,14 @@
              data-en="SOPs, workflows, governance, operational foundations. I build structures that actually hold up over time.">
             SOP, workflows, gouvernance, mise en place des fondations opérationnelles. Je construis les structures qui tiennent dans la durée.
           </p>
+          <span class="service-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
 
-        <div class="service-card reveal-up">
+        <div class="service-card reveal-up"
+             data-modal="automatisation"
+             role="button" tabindex="0" aria-haspopup="dialog">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <path d="M24 6L7 16v16l17 10 17-10V16L24 6z" stroke="currentColor" stroke-width="1.8"/>
@@ -141,9 +153,14 @@
              data-en="AI agents, n8n, Make, CRM, ERP. I connect your tools and automate what doesn't need a human.">
             Agents IA, n8n, Make, CRM, ERP. Je connecte vos outils et j'automatise ce qui n'a pas à être fait à la main.
           </p>
+          <span class="service-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
 
-        <div class="service-card reveal-up">
+        <div class="service-card reveal-up"
+             data-modal="digital"
+             role="button" tabindex="0" aria-haspopup="dialog">
           <div class="service-icon">
             <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <circle cx="24" cy="24" r="17" stroke="currentColor" stroke-width="1.8"/>
@@ -156,6 +173,9 @@
              data-en="Websites, online tools, digital strategy. I build and optimise your digital footprint — like this website.">
             Sites web, outils en ligne, stratégie digitale. Je construis et j'optimise votre visibilité sur le web — comme ce site.
           </p>
+          <span class="service-card-arrow" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
 
       </div>
@@ -432,9 +452,12 @@
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
-      <p class="tool-modal-label" id="toolModalLabel"></p>
-      <h3 class="tool-modal-title" id="toolModalTitle"></h3>
-      <div class="tool-modal-body" id="toolModalBody"></div>
+      <div class="tool-modal-scroll" id="toolModalScroll">
+        <p class="tool-modal-label" id="toolModalLabel"></p>
+        <h3 class="tool-modal-title" id="toolModalTitle"></h3>
+        <div class="tool-modal-body" id="toolModalBody"></div>
+      </div>
+      <div class="tool-modal-cta" id="toolModalCta"></div>
     </div>
   </div>
 

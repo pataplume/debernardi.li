@@ -1269,6 +1269,157 @@ footer {
   }
 }
 
+/* ── SERVICE CARDS — CLICKABLE ───────────────────────────── */
+.service-card[data-modal] {
+  cursor: pointer;
+}
+
+.service-card[data-modal]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: inherit;
+}
+
+.service-card-arrow {
+  position: absolute;
+  bottom: 1.4rem;
+  right: 1.5rem;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+  opacity: 0;
+  transform: translate(-5px, 5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.service-card-arrow svg { width: 100%; height: 100%; }
+
+.service-card[data-modal]:hover .service-card-arrow,
+.service-card[data-modal]:focus-visible .service-card-arrow {
+  opacity: 0.75;
+  transform: translate(0, 0);
+}
+
+/* ── TOOL MODAL — SERVICE VARIANT ────────────────────────── */
+
+/* Scroll wrapper: transparent pass-through for regular modals */
+.tool-modal-scroll { /* no overflow by default */ }
+
+/* Service modal: flex column, capped height, inner scroll */
+.tool-modal--service {
+  padding: 0;
+  max-height: min(90vh, 740px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tool-modal--service .tool-modal-close {
+  /* keep close btn positioned against .tool-modal */
+  top: 1.1rem;
+  right: 1.1rem;
+}
+
+.tool-modal--service .tool-modal-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2.25rem 2.5rem 1.25rem;
+  overscroll-behavior: contain;
+  /* subtle scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-hover) transparent;
+}
+
+.tool-modal--service .tool-modal-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.tool-modal--service .tool-modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tool-modal--service .tool-modal-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 2px;
+}
+
+/* CTA zone — hidden for regular modals */
+.tool-modal-cta { display: none; }
+
+.tool-modal--service .tool-modal-cta {
+  display: block;
+  flex-shrink: 0;
+  padding: 1.25rem 2.5rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.tool-modal-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 8px;
+  padding: 0.85rem 1.5rem;
+  font-family: var(--font-b);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  cursor: none;
+}
+
+.tool-modal-cta-btn:hover { opacity: 0.85; }
+
+.tool-modal-cta-btn svg { flex-shrink: 0; }
+
+/* ── SERVICE MODAL BODY SECTIONS ─────────────────────────── */
+.service-section {
+  margin-bottom: 1.5rem;
+}
+
+.service-section-label {
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.75;
+  margin-bottom: 0.65rem;
+}
+
+.service-format {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  background: rgba(244, 237, 222, 0.04);
+  border-left: 2px solid var(--accent-mid);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.service-price-note {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--text-muted);
+  opacity: 0.55;
+  line-height: 1.55;
+}
+
+/* ── MOBILE ADJUSTMENTS FOR SERVICE MODAL ────────────────── */
+@media (max-width: 560px) {
+  .tool-modal--service .tool-modal-scroll {
+    padding: 1.75rem 1.5rem 1rem;
+  }
+
+  .tool-modal--service .tool-modal-cta {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+}
+
 /* ── UTILITY ─────────────────────────────────────────────── */
 .sr-only {
   position: absolute;
