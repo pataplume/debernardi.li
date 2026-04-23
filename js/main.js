@@ -403,6 +403,9 @@ function hideTyping() {
   document.getElementById('typingWrap')?.remove();
 }
 
+// Conversation history for multi-turn context
+const chatHistory = [];
+
 async function handleSend() {
   const text = input.value.trim();
   if (!text) return;
@@ -410,11 +413,29 @@ async function handleSend() {
   addMessage(text, true);
   showTyping();
 
-  // Simulated thinking delay: 800–1800ms
-  await new Promise(r => setTimeout(r, 800 + Math.random() * 1000));
+  chatHistory.push({ role: 'user', content: text });
 
-  hideTyping();
-  addMessage(getResponse(text, currentLang));
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: chatHistory }),
+    });
+
+    if (!res.ok) throw new Error('API error');
+
+    const data = await res.json();
+    const reply = data.reply;
+
+    chatHistory.push({ role: 'assistant', content: reply });
+    hideTyping();
+    addMessage(reply);
+
+  } catch (err) {
+    // Fallback to keyword matcher if API unavailable
+    hideTyping();
+    addMessage(getResponse(text, currentLang));
+  }
 }
 
 form.addEventListener('submit', (e) => { e.preventDefault(); handleSend(); });
