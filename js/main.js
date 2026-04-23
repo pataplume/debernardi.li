@@ -5,26 +5,42 @@
 
 'use strict';
 
-/* ── 1. LENIS SMOOTH SCROLL ─────────────────────────────── */
-const lenis = new Lenis({
-  lerp: 0.085,
-  smoothWheel: true,
-  smoothTouch: false,
-  autoRaf: false, // We drive the RAF via GSAP ticker below
-});
+/* ── 0. PERF DETECTION ────────────────────────────────────── */
+(function detectPerf() {
+  const heuristic =
+    matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    (navigator.hardwareConcurrency ?? 8) <= 4 ||
+    (navigator.deviceMemory ?? 8) <= 4;
 
+  if (heuristic) {
+    document.documentElement.classList.add('low-perf');
+  }
+
+  // FPS probe 1s — attrape les iGPU pourris avec beaucoup de cores
+  let frames = 0;
+  const t0 = performance.now();
+  requestAnimationFrame(function tick(t) {
+    frames++;
+    if (t - t0 < 1000) requestAnimationFrame(tick);
+    else if (frames < 45) document.documentElement.classList.add('low-perf');
+  });
+})();
+
+const LOW_PERF = document.documentElement.classList.contains('low-perf');
+
+/* ── 1. LENIS SMOOTH SCROLL ─────────────────────────────── */
+let lenis = null;
 gsap.registerPlugin(ScrollTrigger);
 
-// Single RAF loop via GSAP ticker — prevents double-calling Lenis
-gsap.ticker.add((time) => lenis.raf(time * 1000));
-gsap.ticker.lagSmoothing(0);
-
-// Keep ScrollTrigger in sync for parallax
-lenis.on('scroll', () => ScrollTrigger.update());
-window.addEventListener('scroll', () => ScrollTrigger.update(), { passive: true });
+if (!LOW_PERF) {
+  lenis = new Lenis({ lerp: 0.12, smoothWheel: true, smoothTouch: false, autoRaf: false });
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  lenis.on('scroll', () => ScrollTrigger.update());
+}
 
 /* ── 2. CUSTOM CURSOR ───────────────────────────────────── */
-(function initCursor() {
+if (!LOW_PERF) (function initCursor() {
   const dot  = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
@@ -93,16 +109,18 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ── 5. HERO PHOTO PARALLAX ─────────────────────────────── */
-gsap.to('#heroPhoto', {
-  yPercent: -18,
-  ease: 'none',
-  scrollTrigger: {
-    trigger: '#hero',
-    start: 'top top',
-    end: 'bottom top',
-    scrub: true,
-  },
-});
+if (!LOW_PERF) {
+  gsap.to('#heroPhoto', {
+    yPercent: -18,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+    },
+  });
+}
 
 /* ── 6. SCROLL REVEAL ANIMATIONS ────────────────────────── */
 // Signal to CSS that JS is active, enabling the hidden→visible transitions.
@@ -127,8 +145,7 @@ burger.addEventListener('click', () => {
   const isOpen = navLinks.classList.toggle('mobile-open');
   burger.classList.toggle('open', isOpen);
   burger.setAttribute('aria-expanded', isOpen);
-  // Pause Lenis when nav is open
-  isOpen ? lenis.stop() : lenis.start();
+  if (lenis) { isOpen ? lenis.stop() : lenis.start(); }
 });
 
 navLinks.querySelectorAll('a').forEach(a => {
@@ -136,7 +153,7 @@ navLinks.querySelectorAll('a').forEach(a => {
     navLinks.classList.remove('mobile-open');
     burger.classList.remove('open');
     burger.setAttribute('aria-expanded', false);
-    lenis.start();
+    if (lenis) lenis.start();
   });
 });
 
@@ -733,13 +750,13 @@ function openToolModal(id) {
   }
 
   toolModalOverlay.classList.add('open');
-  lenis.stop();
+  if (lenis) lenis.stop();
   toolModalClose.focus();
 }
 
 function closeToolModal() {
   toolModalOverlay.classList.remove('open');
-  lenis.start();
+  if (lenis) lenis.start();
   // Restore focus to the element that triggered the modal
   if (lastFocusedBeforeModal) {
     lastFocusedBeforeModal.focus();
@@ -786,6 +803,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const target = document.querySelector(a.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    lenis.scrollTo(target, { offset: -60, duration: 1.4 });
+    if (lenis) lenis.scrollTo(target, { offset: -60, duration: 1.4 });
+    else target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });

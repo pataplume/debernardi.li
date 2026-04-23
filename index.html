@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://debernardi.li">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -43,7 +43,13 @@
   <!-- ========== HERO ========== -->
   <section id="hero" class="hero">
     <div class="hero-photo-wrap">
-      <img src="assets/photo.png" alt="Tristan Debernardi — COO Genève" class="hero-photo" id="heroPhoto">
+      <picture>
+        <source srcset="assets/photo.webp" type="image/webp">
+        <source srcset="assets/photo.jpg" type="image/jpeg">
+        <img src="assets/photo.jpg" alt="Tristan Debernardi — COO Genève"
+             class="hero-photo" id="heroPhoto"
+             fetchpriority="high" decoding="async" width="1024" height="1536">
+      </picture>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content container">
