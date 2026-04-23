@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/tristan/.nvm/versions/**)",
+      "Bash(ls /Users/tristan/Downloads/*.jpg /Users/tristan/Downloads/*.jpeg /Users/tristan/Downloads/*.png /Users/tristan/Downloads/*.JPG /Users/tristan/Downloads/*.JPEG)",
+      "Bash(cp \"/Users/tristan/Library/Mobile Documents/com~apple~CloudDocs/1 - RDLA/2 - Jobs/2.1 - Job Applications/26 et ouais/Portrait professionnel d'un homme souriant.png\" \"/Users/tristan/debernardi.li/assets/photo.png\")",
+      "Bash(cp \"/Users/tristan/Library/Mobile Documents/com~apple~CloudDocs/1 - RDLA/2 - Jobs/2.1 - Job Applications/26 et ouais/CV/CV_Tristan_Debernardi_2026_v5.pdf\" \"/Users/tristan/debernardi.li/assets/cv-tristan-debernardi.pdf\")"
+    ]
+  }
+}
