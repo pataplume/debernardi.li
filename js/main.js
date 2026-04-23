@@ -695,8 +695,7 @@ function openToolModal(id) {
     toolModalEl.classList.add('tool-modal--service');
 
     toolModalCta.innerHTML =
-      `<a href="#" class="tool-modal-cta-btn">
-        <!-- TODO: lien Google Calendar à fournir -->
+      `<a href="https://calendar.app.google/sBr2whccz3eFwHLF6" target="_blank" rel="noopener noreferrer" class="tool-modal-cta-btn">
         ${data.cta}
         <svg width="14" height="14" viewBox="0 0 15 15" fill="none" aria-hidden="true">
           <path d="M2 7.5h11M8.5 3L13 7.5 8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

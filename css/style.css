@@ -719,6 +719,13 @@ footer {
   margin-bottom: 2rem;
 }
 
+.footer-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
 .footer-right {
   display: flex;
   flex-direction: column;
