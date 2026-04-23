@@ -68,7 +68,7 @@ RÈGLES ABSOLUES
 - Garde les réponses courtes et utiles — pas de dissertation
 - Tu es sur un site professionnel, reste dans ce registre`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
