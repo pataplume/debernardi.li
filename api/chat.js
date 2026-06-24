@@ -71,6 +71,56 @@ RÈGLES ABSOLUES
 
 const https = require('https');
 
+// --- Rate limiting (in-memory) ---
+// Map clé = IP, valeur = liste de timestamps (ms) des requêtes récentes.
+// NOTE HONNÊTE : sur Vercel ce rate-limit est PAR INSTANCE (chaque lambda a sa
+// propre mémoire) et non global ; il est aussi réinitialisé à chaque cold start.
+// C'est un premier rempart raisonnable contre l'abus basique, mais pour une
+// garantie forte il faudrait un store durable et partagé (Upstash / Vercel KV).
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // fenêtre de 60 secondes
+const RATE_LIMIT_MAX = 20; // max 20 requêtes par fenêtre et par IP
+const rateLimitStore = new Map();
+
+// --- Origin allowlist ---
+const ALLOWED_ORIGINS = ['https://debernardi.li', 'https://www.debernardi.li'];
+
+function getClientIp(req) {
+  const xff = req.headers['x-forwarded-for'];
+  if (xff) {
+    // x-forwarded-for peut être une liste "client, proxy1, proxy2" → 1er élément
+    return xff.split(',')[0].trim();
+  }
+  return req.headers['x-real-ip'] || 'unknown';
+}
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW_MS;
+
+  // Nettoie les vieux timestamps de cette IP (évite une fuite mémoire).
+  const recent = (rateLimitStore.get(ip) || []).filter(ts => ts > windowStart);
+
+  if (recent.length >= RATE_LIMIT_MAX) {
+    rateLimitStore.set(ip, recent);
+    return true;
+  }
+
+  recent.push(now);
+  rateLimitStore.set(ip, recent);
+  return false;
+}
+
+function isAllowedOrigin(origin) {
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  // Autorise les previews Vercel (*.vercel.app).
+  try {
+    const { hostname } = new URL(origin);
+    return hostname.endsWith('.vercel.app');
+  } catch (e) {
+    return false;
+  }
+}
+
 function callAnthropic(apiKey, payload) {
   return new Promise((resolve, reject) => {
     const bodyBuf = Buffer.from(JSON.stringify(payload), 'utf-8');
@@ -102,10 +152,52 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // --- Vérification d'Origin (souple) ---
+  // Si l'origin est présent et non autorisé, on bloque : ça stoppe l'abus
+  // depuis d'autres sites web (un navigateur tiers envoie son vrai Origin).
+  // Ça n'arrête PAS un attaquant qui spoofe l'en-tête en scriptant des
+  // requêtes hors navigateur — le vrai rempart reste le rate-limit ci-dessous.
+  // Si l'origin est absent (requêtes same-origin qui peuvent l'omettre), on
+  // laisse passer pour ne pas casser le fallback.
+  const origin = req.headers.origin;
+  if (origin && !isAllowedOrigin(origin)) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+
+  // --- Rate limiting par IP ---
+  const ip = getClientIp(req);
+  if (isRateLimited(ip)) {
+    return res.status(429).json({ error: 'Too many requests' });
+  }
+
   const { messages } = req.body;
 
   if (!messages || !Array.isArray(messages)) {
     return res.status(400).json({ error: 'Invalid messages' });
+  }
+
+  // --- Validation / plafonnement du payload ---
+  if (messages.length === 0 || messages.length > 20) {
+    return res.status(400).json({ error: 'Invalid messages' });
+  }
+
+  let totalLength = 0;
+  for (const msg of messages) {
+    if (
+      !msg ||
+      typeof msg !== 'object' ||
+      (msg.role !== 'user' && msg.role !== 'assistant') ||
+      typeof msg.content !== 'string'
+    ) {
+      return res.status(400).json({ error: 'Invalid messages' });
+    }
+    if (msg.content.length > 1000) {
+      return res.status(413).json({ error: 'Message too long' });
+    }
+    totalLength += msg.content.length;
+  }
+  if (totalLength > 6000) {
+    return res.status(413).json({ error: 'Message too long' });
   }
 
   try {

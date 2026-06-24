@@ -380,12 +380,12 @@ function openChat() {
 function closeChat() {
   chatOpen = false;
   widget.classList.remove('open');
-  lenis.start();
+  if (lenis) lenis.start();
 }
 
 // Suspend Lenis when scrolling inside the chat panel so the native scroll works
-messages.addEventListener('mouseenter', () => { if (chatOpen) lenis.stop(); });
-messages.addEventListener('mouseleave', () => { if (chatOpen) lenis.start(); });
+messages.addEventListener('mouseenter', () => { if (chatOpen && lenis) lenis.stop(); });
+messages.addEventListener('mouseleave', () => { if (chatOpen && lenis) lenis.start(); });
 messages.addEventListener('wheel', (e) => { e.stopPropagation(); }, { passive: true });
 
 toggleBtn.addEventListener('click', () => chatOpen ? closeChat() : openChat());

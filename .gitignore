@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+
+# Claude Code local config
+.claude/
+
+# Git junk
+FETCH_HEAD
+
+# Fichiers de travail internes — ne pas publier
+PERF_FIXES.md
+services-cards-brief.md
+*.docx
+/CV_Tristan_Debernardi_2026_OPS.pdf
