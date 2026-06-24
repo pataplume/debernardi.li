@@ -1436,6 +1436,157 @@ footer {
   }
 }
 
+/* ── TIMELINE LINKS (Condere + liens inline) ─────────────── */
+.timeline-company-link { transition: color 0.2s ease; }
+.timeline-company-link:hover { color: var(--accent-hover); }
+
+.timeline-body p a {
+  color: var(--text);
+  border-bottom: 1px solid var(--accent-mid);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.timeline-body p a:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── RÉALISATIONS ────────────────────────────────────────── */
+.realisations { padding: clamp(5rem, 10vw, 9rem) 0; }
+
+.realisations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.realisation-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s var(--ease-out);
+}
+
+.realisation-card:hover {
+  border-color: var(--accent-mid);
+  transform: translateY(-4px);
+}
+
+.realisation-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.realisation-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.realisation-card:hover .realisation-media img { transform: scale(1.05); }
+
+/* Voile navy bas pour unifier tous les médias avec la DA */
+.realisation-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(17, 21, 64, 0) 55%, rgba(17, 21, 64, 0.55) 100%);
+  pointer-events: none;
+}
+
+/* Média designé — Magritte */
+.realisation-media--magritte {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: radial-gradient(120% 80% at 50% 0%, #181D52 0%, #0c1030 100%);
+}
+.magritte-text {
+  font-family: var(--font-h);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--text);
+  text-align: center;
+}
+
+/* Média designé — terminal soviétique */
+.realisation-media--terminal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #0a0d28;
+  background-image: repeating-linear-gradient(0deg, rgba(201, 169, 110, 0.05) 0px, rgba(201, 169, 110, 0.05) 1px, transparent 1px, transparent 4px);
+}
+.terminal-ru {
+  font-family: 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace;
+  font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.terminal-cursor {
+  width: 0.55em;
+  height: 1.1em;
+  background: var(--accent);
+  animation: termBlink 1.1s steps(1) infinite;
+}
+@keyframes termBlink { 50% { opacity: 0; } }
+
+.realisation-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 1.5rem clamp(1.25rem, 2.5vw, 1.75rem) 1.6rem;
+  flex: 1;
+}
+
+.realisation-title {
+  font-family: var(--font-h);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.realisation-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.realisation-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  transition: gap 0.2s var(--ease-out);
+}
+.realisation-link svg { width: 12px; height: 12px; }
+.realisation-card:hover .realisation-link { gap: 0.65rem; }
+
+@media (max-width: 600px) {
+  .realisations-grid { grid-template-columns: 1fr; }
+}
+
+/* ── OUTILS META (Langues / Profil — séparés des outils) ─── */
+.outils-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem 4rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+
 /* ── LOW-PERF MODE ────────────────────────────────────────── */
 .low-perf body { cursor: auto; }
 .low-perf button, .low-perf .btn, .low-perf a,
@@ -1470,6 +1621,9 @@ footer {
 .low-perf .scroll-line-anim { animation: none; opacity: 0.4; }
 .low-perf .status-dot { animation: none; }
 .low-perf .chat-msg { animation: none; }
+.low-perf .terminal-cursor { animation: none; }
+.low-perf .realisation-card:hover .realisation-media img { transform: none; }
+.low-perf .realisation-card:hover { transform: none; }
 
 /* ── UTILITY ─────────────────────────────────────────────── */
 .sr-only {
